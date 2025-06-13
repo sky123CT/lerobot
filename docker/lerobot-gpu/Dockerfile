@@ -6,6 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV MUJOCO_GL="egl"
 ENV PATH="/opt/venv/bin:$PATH"
 
+RUN mkdir -p /home/lerobot/ws/src
 # Install dependencies and set up Python in a single layer
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential cmake git \
@@ -18,7 +19,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && echo "source /opt/venv/bin/activate" >> /root/.bashrc
 
 # Clone repository and install LeRobot in a single layer
-COPY . /lerobot
-WORKDIR /lerobot
+COPY ./lerobot /home/lerobot/ws/src
+WORKDIR /home/lerobot/ws
 RUN /opt/venv/bin/pip install --upgrade --no-cache-dir pip \
     && /opt/venv/bin/pip install --no-cache-dir ".[test, aloha, xarm, pusht, dynamixel]"
