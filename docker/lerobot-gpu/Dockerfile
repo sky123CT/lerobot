@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && echo "source /opt/venv/bin/activate" >> /root/.bashrc
 
 # Clone repository and install LeRobot in a single layer
-COPY ./lerobot /home/lerobot/ws/src
+COPY ../../../ /home/lerobot/ws/src
 WORKDIR /home/lerobot/ws
 RUN /opt/venv/bin/pip install --upgrade --no-cache-dir pip \
     && /opt/venv/bin/pip install --no-cache-dir ".[test, aloha, xarm, pusht, dynamixel]"
