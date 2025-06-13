@@ -22,4 +22,4 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY ../../../ /home/lerobot/ws/src
 WORKDIR /home/lerobot/ws
 RUN /opt/venv/bin/pip install --upgrade --no-cache-dir pip \
-    && /opt/venv/bin/pip install --no-cache-dir ".[test, aloha, xarm, pusht, dynamixel]"
+    && /opt/venv/bin/pip install --no-cache-dir ".[feetech]"
