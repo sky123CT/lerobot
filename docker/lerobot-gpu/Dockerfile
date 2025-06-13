@@ -21,5 +21,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Clone repository and install LeRobot in a single layer
 COPY ../../../ /home/lerobot/ws/src
 WORKDIR /home/lerobot/ws
-RUN /opt/venv/bin/pip install --upgrade --no-cache-dir pip \
+RUN cd /home/lerobot/ws/src/lerobot \
+    && /opt/venv/bin/pip install --upgrade --no-cache-dir pip \
+    && /opt/venv/bin/pip install -e .\
     && /opt/venv/bin/pip install --no-cache-dir ".[feetech]"
